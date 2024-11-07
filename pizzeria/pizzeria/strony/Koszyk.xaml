@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="pizzeria.strony.Koszyk">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Label x:Name="labelWartosKoszyka" Text="0zł" BackgroundColor="White" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Center"/>
+            <Label Text="Koszyk:" FontSize="Title" BackgroundColor="DeepSkyBlue" TextColor="Black"/>
+            <ListView x:Name="listViewKoszyk" BackgroundColor="White" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="1000"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+                                <Label FontSize="20" Margin="10" TextColor="Black" FontAttributes="Bold, Italic" Text="{Binding nazwa}" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" Grid.Column="0"/>
+                                <Label FontSize="15" Margin="10" TextColor="Gold" FontAttributes="Bold, Italic" Text="{Binding cena}" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" Grid.Column="1"/>
+                                <Label FontSize="10" Margin="10" TextColor="Gold" FontAttributes="Bold, Italic" Text="zł" VerticalTextAlignment="Start" HorizontalTextAlignment="End" Grid.Column="1"/>
+                                <Label FontSize="15" Margin="10" TextColor="Black" FontAttributes="Bold, Italic" Text="{Binding ilosc}" VerticalTextAlignment="Start" HorizontalTextAlignment="Center" Grid.Column="2"/>
+                                <Stepper  Value="{Binding ilosc}" ValueChanged="zmienIloscKoszyk" Minimum="0" Maximum="99" VerticalOptions="Start" HorizontalOptions="Start" Grid.ColumnSpan="3" Grid.Row="1"/>
+                                <Button Text="usuń" Clicked="usunElement" FontSize="5" VerticalOptions="Start" HorizontalOptions="Start" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Dodatki:" FontSize="Subtitle" BackgroundColor="DeepSkyBlue" TextColor="Black"/>
+            <ListView x:Name="listViewDodatki" BackgroundColor="White" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="200"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                </Grid.RowDefinitions>
+                                <CheckBox  IsChecked="{Binding stan}" x:Name="checkbox" CheckedChanged="wybranieDodatku" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0"/>
+                                <Label FontSize="15" TextColor="Black" FontAttributes="Bold, Italic" Text="{Binding nazwa}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="1"/>
+                                <Label FontSize="12" TextColor="Gold" FontAttributes="Bold, Italic" Text="{Binding cena}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Column="2"/>
+                                <Label FontSize="10" TextColor="Gold" FontAttributes="Bold, Italic" Text="zł" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Grid.Column="2"/>
+                                <Label FontSize="12" TextColor="Black" FontAttributes="Bold, Italic" Text="0" IsVisible="{Binding stan}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Grid.Column="3"/>
+                                <Stepper ValueChanged="zmienIloscDodatki" Value="{Binding ilosc}" Minimum="0" Maximum="99" IsVisible="{Binding stan}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="4"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Wyczyść koszyk" Clicked="usunKoszyk"  BackgroundColor="DeepSkyBlue" TextColor="Black"/>
+            <Button Text="Potwierdź zamówienie" Clicked="przeniesDoFormularz"  BackgroundColor="DeepSkyBlue" TextColor="Black"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

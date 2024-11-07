@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="pizzeria.strony.Formularz">
+    <ContentPage.Content>
+        <ContentView>
+            <ScrollView HeightRequest="3000">
+                <StackLayout x:Name="mainForm">
+                    <Entry x:Name="imie" Placeholder="Imie *" TextChanged="sprawdzLitery"/>
+                    <Entry x:Name="nazwisko" Placeholder="Nazwisko *" TextChanged="sprawdzLitery"/>
+                    <Entry x:Name="numerTelefonu" Placeholder="Numer telefonu *" MaxLength="9" Keyboard="Numeric" TextChanged="sprawdzCyfry" />
+                    <Editor x:Name="uwagi" HeightRequest="300" Placeholder="Uwagi"/>
+                    <Grid x:Name="radioButtons">
+                        <RadioButton GroupName="sposob" Content="Na Miejscu" Value="naMiejscu" IsChecked="True" Grid.Column="0" CheckedChanged="RadioButton_CheckedChanged"/>
+                        <RadioButton GroupName="sposob" Content="Dowóz" Value="dowoz" Grid.Column="1" CheckedChanged="RadioButton_CheckedChanged"/>
+                    </Grid>
+                    <StackLayout x:Name="naWynosForm" IsVisible="false">
+                        <Picker x:Name="miejscowosc" Title="Wybierz miejscowość *" >
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Limanowa</x:String>
+                                    <x:String>Rupniów</x:String>
+                                    <x:String>Tymbark</x:String>
+                                    <x:String>Dobra</x:String>
+                                    <x:String>Pasierbiec</x:String>
+                                    <x:String>Kisielówka</x:String>
+                                    <x:String>Stara Wieś</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                        <Entry x:Name="ulica" Placeholder="Ulica" />
+                        <Entry x:Name="nrLokalu" Placeholder="Nr domu/lokalu *" />
+                        <Entry x:Name="email" Placeholder="E-mail *" Keyboard="Email" TextChanged="sprawdzEmail" />
+                        <Grid x:Name="switche" >
+                            <Label x:Name="labelRegulamin" Text="Akceptuję regulamin *" Grid.Row="0" />
+                            <Switch x:Name="switchRegulamin" Grid.Row="0" HorizontalOptions="End"/>
+                            <Label x:Name="labelReklama" Text="Chcę otrzymywać informacje handlowe &#10; na wskazany przeze mnie adres" Grid.Row="1"/>
+                            <Switch x:Name="switchReklama" Grid.Row="1" HorizontalOptions="End"/>
+                        </Grid>
+                    </StackLayout>
+                    <Button x:Name="submit" Text="zamow" Clicked="sprawdzDane"/>
+                </StackLayout>
+            </ScrollView>
+        </ContentView>
+    </ContentPage.Content>
+</ContentPage>

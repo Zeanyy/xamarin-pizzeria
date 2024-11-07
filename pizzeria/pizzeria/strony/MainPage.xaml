@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="pizzeria.strony.MainPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <StackLayout Orientation="Horizontal" BackgroundColor="White">
+                <Image Source="logo.png" VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="100"/>
+                <Label FontSize="Title" TextColor="Black" FontAttributes="Bold, Italic" Text="MENU" VerticalOptions="Center" HorizontalOptions="Center" TranslationX="70"/>
+            </StackLayout>
+            <ListView x:Name="listViewMainPage" BackgroundColor="White" HasUnevenRows="True" ItemTapped="listViewMainPage_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="20"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding zdjecie}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" TranslationY="-15"/>
+                                <Label FontSize="Title" TextColor="Black" FontAttributes="Bold, Italic" Text="{Binding nazwa}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
+                                <Label FontSize="Small" TextColor="Black" FontAttributes="Bold, Italic" Text="{Binding opis}" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="2" Grid.Column="1"/>
+                                <Label FontSize="Subtitle" TextColor="Gold" FontAttributes="Bold, Italic" Text="{Binding cena}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" Grid.Column="1"/>
+                                <Label FontSize="Micro" TextColor="Gold" FontAttributes="Bold, Italic" Text="zł." Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center" TranslationX="30" Grid.Column="1"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Koszyk" Clicked="przeniesDoKoszyka" BackgroundColor="DeepSkyBlue" TextColor="Black"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

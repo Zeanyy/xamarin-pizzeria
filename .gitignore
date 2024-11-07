@@ -1,0 +1,17 @@
+# Pliki generowane automatycznie przez środowisko
+bin/
+obj/
+*.userprefs
+*.user
+*.vs
+*.vscode
+*.suo
+
+# Pliki specyficzne dla platform mobilnych
+*.apk
+*.aab
+*.ipa
+
+# Systemowe pliki tymczasowe
+.DS_Store
+Thumbs.db
